@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  db:
+    image: mysql/mysql-server:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'admin'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: '123456'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: '123456'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - my-db:/var/lib/mysql
+  backend:
+    build: ./springboot-crud
+    environment:
+      - spring.datasource.password=123456
+      - spring.datasource.username=root
+      - spring.datasource.url=jdbc:mysql://host.docker.internal:3306/employee-schema
+    ports:
+      - "8080:8080"
+  frontend:
+    build: ./docker-sample-angular 
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      - APP_NAME=MyApp
+    ports:
+      - "3000:80"
+volumes:
+  my-db:
