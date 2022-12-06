@@ -1,4 +1,10 @@
 FROM openjdk:8-jdk-alpine
+
+#builds the app
+CMD [".\mvnw package spring-boot:run -Dspring-boot.run.arguments="--spring.datasource.username=root --spring.datasource.password=123456 --spring.datasource.url=jdbc:mysql://localhost:3306/employee-schema" && java -jar target\employee-0.0.1-SNAPSHOT.jar"]
+
 ARG JAR_FILE=target/*.jar
+
 COPY ${JAR_FILE} employee-0.0.1-SNAPSHOT.jar
+
 ENTRYPOINT ["java","-jar","/employee-0.0.1-SNAPSHOT.jar"]

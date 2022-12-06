@@ -8,11 +8,12 @@ It is composed of 3 parts:
 
 1. [Angular 14 front-end](docker-sample-angular) - See the docker-sample-angular folder
 2. [Spring / Maven back-end](springboot-crud) - See the springboot-crud folder
-3. MySQL 8 database server
+3. [MySQL 8 database server](dcker-mysql-8) - See the docker-mysql-8 folder
 
 ## Dependencies
 
 1. MS Windows
+2. [Java](https://access.redhat.com/jbossnetwork/restricted/softwareDetail.html?softwareId=104805&product=core.service.openjdk&version=17.0.5&downloadType=distributions) / JAVA_HOME is added to the PATH.
 2. Docker Desktop
 2. Docker Compose
 3. [Workbench](https://www.mysql.com/products/workbench/)
@@ -24,9 +25,9 @@ It is composed of 3 parts:
 
 ## First Time Process to run the application
 
-1. `git clone ` the application down
+1. `git clone https://github.com/dragonspearsinc/docker-sample-3-tier`
 2. `docker compose up -d`
-3. `docker exec -it docker-sample-3-tier-db-1 mysql -uroot -p`
+3. `docker exec -it docker-sample-3-tier-db-1 mysql -uroot -p`  //default passwrd is `123456`
 4. `update mysql.user set host = '%' where user='admin';`
 5. `update mysql.user set host = '%' where user='root';`
 6. `docker restart docker-sample-3-tier-db-1`
