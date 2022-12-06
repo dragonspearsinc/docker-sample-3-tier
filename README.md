@@ -8,7 +8,7 @@ It is composed of 3 parts:
 
 1. [Angular 14 front-end](docker-sample-angular) - See the docker-sample-angular folder
 2. [Spring / Maven back-end](springboot-crud) - See the springboot-crud folder
-3. [MySQL 8 database server](dcker-mysql-8) - See the docker-mysql-8 folder
+3. [MySQL 8 database server](docker-mysql-8) - See the docker-mysql-8 folder
 
 ## Dependencies
 
